@@ -1,0 +1,25 @@
+<div class="ui label"> {{title}}</div>
+<form action ="{{path('todos.add')}} " method="post">
+    <input type="text" name="elm" placeholder="Nouvel Element">
+</form>
+
+
+<div>
+    {% for elm in list %}
+
+
+
+    <form action="{{path('todos.edit',[loop.index0])}}" method ="post">
+        <input type="checkbox" >  {{elm}}  <input type="text" name = "elm" value ="{{elm}}">
+
+    </form>
+    <a href="{{path('todos.delete',[loop.index0])}}">Delete</a>
+
+
+    <br>
+    {% endfor %}
+
+    <form action="{{path('todos.save')}}" method ="get">
+        <input type="Submit" value ="Sauvegarder" >
+    </form>
+</div>
