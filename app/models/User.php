@@ -20,7 +20,6 @@ class User{
 	#[Validator(type: "id",constraints: ["autoinc"=>true])]
 	private $id;
 
-    private $login;
 	
 	#[Column(name: "firstname",dbType: "varchar(65)")]
 	#[Validator(type: "length",constraints: ["max"=>65,"notNull"=>true])]
@@ -54,13 +53,13 @@ class User{
 	private $organization;
 
 	
-	#[ManyToMany(targetEntity: "models\\Groupe",inversedBy: "users")]
-	#[JoinTable(name: "groupeusers")]
-	private $groupes;
+	#[ManyToMany(targetEntity: "models\\Group",inversedBy: "users")]
+	#[JoinTable(name: "groupusers")]
+	private $groups;
 
 
 	 public function __construct(){
-		$this->groupes = [];
+		$this->groups = [];
 	}
 
 
@@ -134,39 +133,23 @@ class User{
 	}
 
 
-	public function getGroupes(){
-		return $this->groupes;
+	public function getGroups(){
+		return $this->groups;
 	}
 
 
-	public function setGroupes($groupes){
-		$this->groupes=$groupes;
+	public function setGroups($groups){
+		$this->groups=$groups;
 	}
 
 
-	 public function addGroupe($groupe){
-		$this->groupes[]=$groupe;
+	 public function addGroup($group){
+		$this->groups[]=$group;
 	}
 
 
 	 public function __toString(){
-		return ($this->email??'no value').'';
+		return $this->firstname. " ".$this->lastname;
 	}
-
-    /**
-     * @return mixed
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * @param mixed $login
-     */
-    public function setLogin($login): void
-    {
-        $this->login = $login;
-    }
 
 }

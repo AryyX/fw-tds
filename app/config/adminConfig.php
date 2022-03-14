@@ -31,6 +31,17 @@ return array(
 							]
 					]
 			],
+	"git-macros"=>[
+			"Status"=>"git status",
+			"commit & push"=>"git+add+.%0Agit+commit+-m+%22%3Cyour+message%3E%22%0Agit+push%0A",
+			"checkout"=>"git+checkout+%3Cbranch-name%3E",
+			"remove file from remote repository"=>"git+rm+--cached+%3Cfilename%3E%0Agit+commit+-m+%22Removed+file+from+repository%22%0Agit+push",
+			"remove folder from remote repository"=>"git+rm+--cached+-r+%3Cdir_name%3E%0Agit+commit+-m+%22Removed+folder+from+repository%22%0Agit+push",
+			"undo last commit (soft)"=>"git+reset+--soft+HEAD%5E",
+			"undo last commit (hard)"=>"git+reset+--hard+HEAD%5E",
+			"unstage file(s) from index"=>"git+rm+--cached+%3Cfile-name%3E",
+			"stash & pull (overwrite local changes with pull)"=>"git+stash%0Agit+pull%0A"
+			],
 	"part1"=>[
 			"models",
 			"routes",
@@ -40,8 +51,8 @@ return array(
 			"config"
 			],
 	"part2"=>[
-			"composer",
-			"logs"
+			"maintenance",
+			"composer"
 			],
-	"style"=>"inverted"
+	"style"=>""
 	);
