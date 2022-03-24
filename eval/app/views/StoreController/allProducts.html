@@ -1,0 +1,21 @@
+
+<h1 style="color: #00b5ad">Tous les produits</h1>
+<h4 style="color: grey">{{count}} références</h4>
+<hr style="color: #00b5ad">
+
+<div class="ui six cards attached">
+    {% for product in products %}
+    <div class="ui card" >
+        <div class="content">
+            <div class="ui card ui class" >{{img('store/' ~ product.image ~ '.jpg', {class: ''})}}</div>
+            <h2>{{product.name}}</h2>
+            {{product.price}} €
+            <hr>
+
+        </div>
+        <div class="extra content">
+            <a class="ui positive button" href="{{ path ('store.addToCart', [product.id, 1])}}">+ To cart</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
