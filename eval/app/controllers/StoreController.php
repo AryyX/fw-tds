@@ -27,31 +27,19 @@ class StoreController extends \controllers\ControllerBase{
 
     #[Route('_default', name : 'home')]
 	public function index(){
-        $this->repo->all();
+        $this->repo->all("",["products"]);
         $count = DAO::count(Product::class);
         $this->loadView('StoreController/index.html', ["count"=>$count]);
 	}
-    /*#[Get(name: 'store.allProducts')]
-    public function allProducts(){
-        $this->LinkTo("store.allProducts");
-    }
 
-    #[Get(name: 'section.name')]
-    public function section_name(){
-        $names = DAO::getAll(Section::class );
-        foreach($names as $name){
-            echo $name->getName()."<br>";
-        }
+    #[Route(path: "store/idSection", name: 'store.section')]
+    public function sectionroute(int $id) {
+        $this->repo->all($id);
+       /* $count = DAO::count(Product::class);
+        $countsection = DAO::count(Section::class);*/
+        $this->loadView('StoreController/index.html');
 
     }
 
-    #[Get(name: 'section.description')]
-    public function section_desc(){
-        $descs = DAO::getAll(Section::class );
-        foreach($descs as $desc){
-            echo $desc->getDescription()."<br>";
-        }
-
-    }*/
     
 }
