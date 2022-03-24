@@ -35,8 +35,6 @@ class StoreController extends \controllers\ControllerBase{
     #[Route(path: "store/idSection", name: 'store.section')]
     public function sectionroute(int $id) {
         $this->repo->all($id);
-       /* $count = DAO::count(Product::class);
-        $countsection = DAO::count(Section::class);*/
         $this->loadView('StoreController/index.html');
 
     }
