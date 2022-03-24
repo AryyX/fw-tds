@@ -1,17 +1,16 @@
 {% block body %}
-<a href="{{path('store.allProducts')}}" class="ui button green" data-target="body"> Parcourir le store ({{count}} produits)</a>
+<a href="{{path('store.allProducts')}}" class="ui button green"> Parcourir le store ({{count}} produits)</a>
 <hr>
 
-<ul>
     <div class="ui four cards">
-        {% for section in all %}
+        {% for section in sections %}
         <div class="ui card">
             <h1>{{section.name}}</h1>
             <p>{{section.description}}</p>
-            <a href="{{path('store.section, [idSection]')}}" class="ui button grey"> Consulter produits ({{section.products|length}})</a>
+            <a class="ui button grey" href="{{path('store.section', [section.id])}}" > + Consulter produits ({{section.products|length}})</a>
         </div>
         {% endfor %}
     </div>
-</ul>
+
 {% endblock %}
 

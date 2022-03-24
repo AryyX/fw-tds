@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sections</title>
+</head>
+<body>
+
+{% block body %}
+<h1 style="color: #00b5ad">Section</h1>
+<h5>{{section.name}}</h5>
+<hr style="color: #00b5ad">
+
+<ul>
+    <div class="ui four cards">
+        {% for i in byId.products %}
+        <div class="ui card">
+
+            {{img('store/' ~ i.image ~ '.jpg', {class: ''})}}
+            <h1>{{i.name}}</h1>
+            {{i.price}} €
+            <hr>
+            <a href="{{path('store.addToCart', [i.id, 1])}}" class="ui button green"> + To cart </a>
+        </div>
+        {% endfor %}
+    </div>
+</ul>
+{% endblock %}
+
+
+
+</body>
+</html>
